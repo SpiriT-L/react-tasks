@@ -1,5 +1,5 @@
 export interface User {
-  map: unknown;
+  map: unknown | unknown;
   filter(arg0: (item: User) => boolean): unknown;
   id?: number;
   first_name: string;
