@@ -38,5 +38,14 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-no-useless-fragment': 'off',
     'react/self-closing-comp': 'off',
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      {
+        labelComponents: ['CustomInputLabel'],
+        labelAttributes: ['label'],
+        controlComponents: ['CustomInput'],
+        depth: 3,
+      },
+    ],
   },
 };
