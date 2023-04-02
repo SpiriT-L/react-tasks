@@ -1,0 +1,33 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  width: calc(100% / 4);
+  min-height: 300px;
+}
+.context {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.img{
+  width: 100%;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: 1rem;
+  margin: 10px;
+}
