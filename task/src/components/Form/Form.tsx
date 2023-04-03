@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import styles from '../Cards/Cards.module.scss';
+import styles from './Form.module.scss';
 
 const COUNTRY = [
   {
@@ -34,52 +34,103 @@ export default function Form() {
   const ageItems = ['0-18', '18-25', '25-40'];
   const [email, setEmail] = useState('');
   const [file, setFile] = useState('');
+  const [error, setError] = useState(false);
 
   const [checkedHTML, setCheckedHTML] = useState(false);
   const [checkedCSS, setCheckedCSS] = useState(false);
   const [checkedJS, setCheckedJS] = useState(false);
   const [checkedReact, setCheckedReact] = useState(false);
   const fileInput = useRef();
-  const handlerSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(fileInput.current.files[0], firstName);
+    if (firstName.length === 0 || email.length === 0) {
+      setError(true);
+    }
+    // console.log(fileInput.current.files[0], firstName);
   };
 
+  const addCard = () => {
+    <div className={styles.card}>
+      <div className={styles.context}>
+        {/* <img
+          src={fileInput.current.files[0]}
+          alt="img"
+          className={styles.img}
+        /> */}
+        <div className={(styles.firstName, styles.item)}>
+          <h4>First Name:</h4> {firstName}
+        </div>
+        <div className={(styles.email, styles.item)}>
+          <h4>Email:</h4> {email}
+        </div>
+        <div className={(styles.country, styles.item)}>
+          <h4>Country:</h4> {inputSelect}
+        </div>
+        <div className={(styles.age, styles.item)}>
+          <h4>Age:</h4> {inputRadio}
+        </div>
+        <div className={(styles.skills, styles.item)}>
+          <h4>Skills:</h4> {checkedHTML} {checkedCSS} {checkedJS} {checkedReact}
+        </div>
+      </div>
+    </div>;
+  };
+  console.log(addCard());
+
   return (
-    <div>
-      <h2>Form</h2>
-      <form onSubmit={handlerSubmit}>
+    <>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.block}>
-          <label htmlFor="FirstName">
-            <h4>First Name:</h4>
+          <label className={styles.label} htmlFor="FirstName">
+            <h4 className={styles.h4}>First Name:</h4>
           </label>
-          <input
-            type="text"
-            name="firstName"
-            id="FirstName"
-            value={firstName}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setFirstName(e.target.value)
-            }
-          />
+          <div className={styles.inputBlock}>
+            <input
+              className={styles.inputText}
+              type="text"
+              name="firstName"
+              id="FirstName"
+              value={firstName}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setFirstName(e.target.value)
+              }
+            />
+            {error && firstName.length <= 0 ? (
+              <div className={styles.error}>
+                Error. The field cannot be empty
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
         </div>
         <div className={styles.block}>
-          <label htmlFor="Email">
-            <h4>Email:</h4>
+          <label className={styles.label} htmlFor="Email">
+            <h4 className={styles.h4}>Email:</h4>
           </label>
-          <input
-            type="email"
-            name="email"
-            id="Email"
-            value={email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setEmail(e.target.value)
-            }
-          />
+          <div className={styles.inputBlock}>
+            <input
+              className={styles.inputText}
+              type="email"
+              name="email"
+              id="Email"
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setEmail(e.target.value)
+              }
+            />
+            {error && email.length <= 0 ? (
+              <div className={styles.error}>
+                Error. The field cannot be empty
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
         </div>
-        <div className={styles.inputBlock}>
-          <label htmlFor="inputSelect">
-            <h4>Country:</h4>
+        <div className={styles.block}>
+          <label className={styles.label} htmlFor="inputSelect">
+            <h4 className={styles.h4}>Country:</h4>
           </label>
           <select
             className={(styles.input, styles.select)}
@@ -96,10 +147,11 @@ export default function Form() {
           </select>
         </div>
         <div className={styles.block}>
-          <h4>Age:</h4>
+          <h4 className={styles.h4}>Age:</h4>
           {ageItems.map((ageItem: string) => (
-            <label htmlFor="radio" key={ageItem}>
+            <label className={styles.label} htmlFor="radio" key={ageItem}>
               <input
+                className={styles.radio}
                 type="radio"
                 name="0-18"
                 id="checked"
@@ -111,9 +163,10 @@ export default function Form() {
           ))}
         </div>
         <div className={styles.block}>
-          <label htmlFor="skils">
-            <h4>Skils:</h4>
+          <label className={(styles.label, styles.checkox)} htmlFor="skils">
+            <h4 className={styles.h4}>Skils:</h4>
             <input
+              className={styles.inputCheckbox}
               type="checkbox"
               name="HTML"
               id="checked"
@@ -122,6 +175,7 @@ export default function Form() {
             />{' '}
             HTML
             <input
+              className={styles.inputCheckbox}
               type="checkbox"
               name="CSS"
               id="checked"
@@ -130,6 +184,7 @@ export default function Form() {
             />{' '}
             CSS
             <input
+              className={styles.inputCheckbox}
               type="checkbox"
               name="JS"
               id="checked"
@@ -138,6 +193,7 @@ export default function Form() {
             />{' '}
             JS
             <input
+              className={styles.inputCheckbox}
               type="checkbox"
               name="React"
               id="checked"
@@ -148,14 +204,20 @@ export default function Form() {
           </label>
         </div>
         <div className={styles.block}>
-          <h4>Images:</h4>
+          <h4 className={styles.h4}>Images:</h4>
 
-          <label htmlFor="img">
+          <label className={styles.label} htmlFor="img">
             <input type="file" name="Images" id="img" ref={fileInput} />
           </label>
         </div>
-        <input type="submit" value="Submit" />
+        <input
+          className={styles.submit}
+          type="submit"
+          value="Submit"
+          onClick={addCard}
+        />
       </form>
+
       {/* <div className={styles.card}>
         <div className={styles.context}>
           <img
@@ -181,6 +243,6 @@ export default function Form() {
           </div>
         </div>
       </div> */}
-    </div>
+    </>
   );
 }
