@@ -1,0 +1,83 @@
+@import url(../../index.scss);
+
+.formImput {
+  display: flex;
+  justify-content: center;
+}
+
+.searchImput {
+  width: 100%;
+  max-width: 500px;
+  height: 50px;
+  border: 2px solid #8000ff;
+  border-radius: 25px;
+  font-size: 24px;
+  padding: 0px 50px 0px 50px;
+  outline: none;
+  position: relative;
+  display: flex;
+  z-index: 1;
+  margin: 0px 0px 50px 0px;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 14px;
+  left: 0;
+  color: #8000ff;
+  position: relative;
+  z-index: 2;
+  margin-right: -38px;
+}
+
+.searchIcon + input {
+  padding-left: 45px;
+}
+
+.list {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.listItem {
+  margin-bottom: 20px;
+  font-size: 25px;
+  color: #444;
+  font-weight: 300;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  width: calc(100% / 4);
+  min-height: 300px;
+}
+.context {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.img {
+  width: 100%;
+  max-height: 10px;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: 1rem;
+  margin: 10px;
+}
