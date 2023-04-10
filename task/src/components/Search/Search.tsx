@@ -3,6 +3,7 @@ import styles from './Search.module.scss';
 import { User } from '../../types/types';
 import Card from '../Cards/Card';
 import { Users } from '../../users';
+import Api from '../Api/Api';
 
 export default function Search() {
   const [query, setQuery] = useState(() => {
@@ -11,9 +12,7 @@ export default function Search() {
     return initialValue || '';
   });
   const search = (data: User) => {
-    return data.filter((item: User) =>
-      item.first_name.toLowerCase().includes(query)
-    );
+    return data.filter((item: User) => item.name.toLowerCase().includes(query));
   };
 
   useEffect(() => {
@@ -36,7 +35,8 @@ export default function Search() {
           />
         </form>
         <div className={styles.cards}>
-          <Card data={search(Users)} />
+          {/* <Card data={search(Users)} /> */}
+          {/* <Api /> */}
         </div>
       </div>
     </>
