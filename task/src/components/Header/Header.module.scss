@@ -1,0 +1,23 @@
+@import url(../../index.scss);
+.header {
+  background-color: #f2f2f2;
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.navList {
+  display: flex;
+  gap: 0 15px;
+  // justify-content: flex-end;
+}
+.navItem {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}

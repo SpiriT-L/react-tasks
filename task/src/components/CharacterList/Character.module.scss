@@ -1,0 +1,15 @@
+.title {
+  font-size: 4rem;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+}
+.characterCardList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  gap: 10px;
+  padding: 50px 0px 50px 0px;
+}
