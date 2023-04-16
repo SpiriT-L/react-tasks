@@ -12,7 +12,7 @@ export default function Home() {
       <section className={styles.sectionHome}>
         <div className="container">
           <h2 className={styles.title}>Home</h2>
-          <Search />
+          {/* <Search /> */}
           <Api />
         </div>
       </section>

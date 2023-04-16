@@ -5,7 +5,7 @@ import Card from '../Cards/Card';
 import { Users } from '../../users';
 import Api from '../Api/Api';
 
-export default function Search() {
+export default function Search(characters) {
   const [query, setQuery] = useState(() => {
     const saved: string = localStorage.getItem('query');
     const initialValue = JSON.parse(saved);
@@ -14,7 +14,7 @@ export default function Search() {
   const search = (data: User) => {
     return data.filter((item: User) => item.name.toLowerCase().includes(query));
   };
-
+console.log(characters.name)
   useEffect(() => {
     localStorage.setItem('query', JSON.stringify(query));
   }, [query]);

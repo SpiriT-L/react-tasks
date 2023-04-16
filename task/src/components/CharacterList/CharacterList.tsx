@@ -1,5 +1,6 @@
 import Character from '../Character/Character';
 import NavPage from '../NavPage/NavPage';
+import Search from '../Search/Search';
 import styles from './Character.module.scss';
 
 // function NavPage() {
@@ -14,6 +15,7 @@ import styles from './Character.module.scss';
 function CharacterList({ characters, page, setPage }) {
   return (
     <>
+      <Search character={characters} />
       <h2 className={styles.title}>Rick end Morty</h2>
       <NavPage page={page} setPage={setPage} />
 
